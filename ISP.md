@@ -1,6 +1,6 @@
 - ISP
 ```tcl
-hostnamectl set-hostname isp;exec bash
+hostnamectl set-hostname isp
 mkdir /etc/net/ifaces/ens20
 mkdir /etc/net/ifaces/ens21
 mkdir /etc/net/ifaces/ens22
