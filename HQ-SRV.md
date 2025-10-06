@@ -21,7 +21,7 @@ echo -e "Authorized access only" > /etc/openssh/banner
 systemctl restart sshd
 timedatectl set-timezone Asia/Yekaterinburg 
 apt-get update
-apt-get install dnsmasq –y
+apt-get install dnsmasq -y
 systemctl enable --now dnsmasq
 echo "no-resolv" >> /etc/dnsmasq.conf
 echo "domain=au-team.irpo" >> /etc/dnsmasq.conf
