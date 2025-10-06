@@ -19,6 +19,6 @@ timedatectl set-timezone Asia/Yekaterinburg
 apt-get update && apt-get install dnsmasq –y
 systemctl enable --now dnsmasq
 echo -e "no-resolv\ndomain=au-team.irpo\nserver=8.8.8.8\ninterface=*\naddress=/hq-rtr.au-team.irpo/192.168.1.1\nptr-record=1.1.168.192.in-addr.arpa,hq-rtr.au-team.irpo\naddress=/hq-srv.au-team.irpo/192.168.1.10\nptr-record=10.1.168.192.in-addr.arpa,hq-srv.au-team.irpo\naddress=/hq-cli.au-team.irpo/192.168.2.10\nptr-record=10.2.168.192.in-addr.arpa,hq-cli.au-team.irpo\naddress=/br-rtr.au-team.irpo/192.168.3.1\naddress=/br-srv.au-team.irpo/192.168.3.10\naddress=/docker.au-team.irpo/172.16.1.1\naddress=/web.au-team.irpo/172.16.2.1" > /etc/dnsmasq.conf
-echo -e "192.168.1.1  hq-rtr.au-team.irpo" > /etc/hosts
+echo "192.168.1.1 hq-rtr.au-team.irpo" >> /etc/hosts
 systemctl restart dnsmasq
 ```
