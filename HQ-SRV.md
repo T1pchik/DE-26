@@ -12,7 +12,7 @@ useradd remote_user -u 2026
 echo -e "P@ssw0rd\nP@ssw0rd" | passwd remote_user
 gpasswd -a “remote_user” wheel
 sed -i '/WHEEL_USERS.*ALL.*NOPASSWD.*ALL/s/^#//' /etc/sudoers
-echo -e "Port 2026\nAllowUsers remote_user\nMaxAuthTries\nPasswordAuthentication yes\nBanner /etc/openssh/banner " > /etc/openssh/sshd_config
+echo "Port 2026\nAllowUsers remote_user\nMaxAuthTries\nPasswordAuthentication yes\nBanner /etc/openssh/banner " > /etc/openssh/sshd_config
 echo -e "Authorized access only" > /etc/openssh/banner
 systemctl restart sshd
 timedatectl set-timezone Asia/Yekaterinburg 
