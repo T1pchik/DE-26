@@ -9,12 +9,10 @@ echo -e "default via 192.168.3.1" > /etc/net/ifaces/ens20/ipv4route
 echo -e "nameserver 8.8.8.8 " > /etc/resolv.conf
 systemctl restart network
 useradd remote_user -u 2026
-passwd remote_user
-P@ssw0rd 
-P@ssw0rd 
+echo -e "P@ssw0rd\nP@ssw0rd" | passwd remote_user
 gpasswd -a “remote_user” wheel
-sudo sed -i 's/^#WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL/WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
-echo -e "Port 2026\nAllowUsers remote_user\nMaxAuthTries 2\тPasswordAuthentication yes\nBanner /etc/openssh/banner " > /etc/openssh/sshd_config
+sed -i '/WHEEL_USERS.*ALL.*NOPASSWD.*ALL/s/^#//' /etc/sudoers
+echo -e "Port 2026\nAllowUsers remote_user\nMaxAuthTries\nPasswordAuthentication yes\nBanner /etc/openssh/banner " > /etc/openssh/sshd_config
 echo -e "Authorized access only" > /etc/openssh/banner
 systemctl restart sshd
 timedatectl set-timezone Asia/Yekaterinburg
