@@ -31,8 +31,9 @@ apt-get install -y apache2 php8.2 apache2-mod_php8.2 mariadb-server php8.2-{opca
 sleep 4
 mount -o loop /dev/sr0
 systemctl enable --now httpd2 mysqld
-mysql_secure_installation* <font color=gray>| везде enter | пароль: P@ssw0rd</font>
-mariadb -u root -
+mysql_secure_installation
+
+mariadb -u root -p
 CREATE DATABASE webdb;
 CREATE USER 'webc'@'localhost' IDENTIFIED BY 'P@ssw0rd';
 GRANT ALL PRIVILEGES ON webdb.* TO 'webc'@'localhost';
@@ -46,7 +47,8 @@ cp /media/ALTLinux/web/logo.png /var/www/html
 rm -f /var/www/html/index.html
 chown apache2:apache2 /var/www/html
 systemctl restart httpd2*
-vim /var/www/html/index.php
+
+/var/www/html/index.php
 $servername = "localhost";
 $username = "webc";
 $password = "P@ssw0rd";
